@@ -105,3 +105,28 @@ client.Recommend(request)  # this line throws error since we are sending a reque
 `client.Recommend` comes from the second last line of the **protobuf/recommendations.proto** file `rpc Recommend (...) returns (...)`
 
 ### RPC Server
+To run your RPC server, you need to write a Service class inheriting `recommendations_pb2_grpc.RecommendationsServicer` and then add this service to the recommendations servicer,
+
+For complete code, checkout **recommendations/recommendations.py**
+```
+def serve():
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    recommendations_pb2_grpc.add_RecommendationsServicer_to_server(
+        RecommendationService(), server
+    )
+    server.add_insecure_port("[::]:50051")
+    server.start()
+    server.wait_for_termination()
+
+
+if __name__ == "__main__":
+    serve()
+```
+
+Now we can run the server using, `python recommendations.py` and then simply run the `client.Recommend(request)` again and you should get the response from your microservice.
+
+
+
+**NOTE:** For complete article with proper details and usage along with code snippets, checkout [realpython-microservices-grp](https://realpython.com/python-microservices-grpc/)
+
+To deploy your Python Microservice in a Production ready environment, checkout [](https://realpython.com/python-microservices-grpc/#production-ready-python-microservices)
