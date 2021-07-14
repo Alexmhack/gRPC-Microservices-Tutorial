@@ -129,4 +129,4 @@ Now we can run the server using, `python recommendations.py` and then simply run
 
 **NOTE:** For complete article with proper details and usage along with code snippets, checkout [realpython-microservices-grp](https://realpython.com/python-microservices-grpc/)
 
-To deploy your Python Microservice in a Production ready environment, checkout [](https://realpython.com/python-microservices-grpc/#production-ready-python-microservices)
+To deploy your Python Microservice in a Production ready environment, checkout [production-ready-python-microservices](https://realpython.com/python-microservices-grpc/#production-ready-python-microservices)
